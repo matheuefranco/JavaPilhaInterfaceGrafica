@@ -9,7 +9,7 @@ package javarecordscontrol;
  *
  * @author mefma
  */
-public class JavaRecord {
+public class JavaRecordMain {
 
     /**
      * @param args the command line arguments
