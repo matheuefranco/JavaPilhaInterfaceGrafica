@@ -1,12 +1,20 @@
 
 package javarecordscontrol;
 
-public class Pilha<T> {
+import java.util.*;
+import java.util.NoSuchElementException;
+
+public class Pilha<T>  {
     private T[] elementos;
     private int topo;
     
     public Pilha(int tamanho){
         this.elementos = (T[]) new Object[tamanho];
+        this.topo = -1;
+    }
+    
+    public Pilha(){
+        this.elementos = (T[]) new Object[10];
         this.topo = -1;
     }
     public boolean isEmpty(){
@@ -55,5 +63,7 @@ public class Pilha<T> {
         
         return retorno.toString();
     }
+    
+    
     
 }

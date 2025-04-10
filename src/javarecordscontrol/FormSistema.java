@@ -3,14 +3,22 @@ package javarecordscontrol;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 public class FormSistema extends javax.swing.JFrame {
-    // Declarar estruturas
+    Pilha<Recorde> minhaPilha = new Pilha();
     
     public FormSistema() {
         initComponents();
+    }
+    
+    void mostrarPilha(Pilha<Recorde> p, JTextArea meuList){
+        meuList.setText("");
+        meuList.append(p.toString());
+        
     }
 
 
@@ -187,9 +195,15 @@ public class FormSistema extends javax.swing.JFrame {
 
     
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       
-       
-
+        Recorde novoRecorde = new Recorde();
+        novoRecorde.setNome(txtNome.getText());
+        novoRecorde.setTempo(Double.parseDouble(txtTempo.getText()));
+        String dataStr = txtData.getText();
+        LocalDate dataFormatada = LocalDate.parse
+              (dataStr,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        novoRecorde.setDataRecorde(dataFormatada) ;
+        minhaPilha.push(novoRecorde);
+        mostrarPilha(minhaPilha, listPilha);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
